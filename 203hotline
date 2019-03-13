@@ -10,16 +10,19 @@ from sys import argv, stderr
 from math import factorial
 
 def error():
-    """Error message, on error output"""
+    """Error message, on error output, then exits."""
     stderr.write("INVALID ARGUMENT\n")
     exit(84)
 
 def binomial_coefficient(n: int, k: int):
     """Get the binomial coefficient of 2 values."""
-    a = factorial(n)
-    b = factorial(k)
-    c = factorial(n - k)
-    div = a // (b * c)
+    try:
+        a = factorial(n)
+        b = factorial(k)
+        c = factorial(n - k)
+        div = a // (b * c)
+    except:
+        div = 0
     return div
 
 def hotline_two(data: [int]):
