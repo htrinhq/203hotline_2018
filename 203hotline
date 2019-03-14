@@ -30,9 +30,29 @@ def hotline_two(data: [int]):
     print('{:g}-combination of a {:g} set:' .format(data[1], data[0]))
     print('{:d}' .format(binomial_coefficient(data[0], data[1])))
 
+def binomial_law(data: int):
+    """Get th ebinomial law from 0 to 50."""
+    n = 3500
+    x = 1
+    print('Binomial distribution:')
+    for i in range(0, 51):
+        p = data / (3600 * 8)
+        try:
+            result = (binomial_coefficient(n, i) * \
+                (p ** i) * ((1 - p) ** (n - i)))
+        except:
+            result = 0
+        print('{:d} -> {:.03f}' .format(i, result), end= '')
+        if x == 6 or i == 50:
+            print('')
+            x = 0
+        else:
+            print('', end='\t')
+        x += 1
+
 def hotline_one(data: int):
     """Hotline function with 1 arg."""
-    pass
+    binomial_law(data)
 
 def usage():
     """Print the helper in the standard output."""
