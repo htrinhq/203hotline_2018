@@ -7,59 +7,19 @@
 ##
 
 from sys import argv, stderr
-from math import factorial
+from hotline import hotline_one, hotline_two
 
 def error():
     """Error message, on error output, then exits."""
     stderr.write("INVALID ARGUMENT\n")
     exit(84)
 
-def binomial_coefficient(n: int, k: int):
-    """Get the binomial coefficient of 2 values."""
-    try:
-        a = factorial(n)
-        b = factorial(k)
-        c = factorial(n - k)
-        div = a // (b * c)
-    except:
-        div = 0
-    return div
-
-def hotline_two(data: [int]):
-    """Hotline function with 2 args."""
-    print('{:g}-combination of a {:g} set:' .format(data[1], data[0]))
-    print('{:d}' .format(binomial_coefficient(data[0], data[1])))
-
-def binomial_law(data: int):
-    """Get th ebinomial law from 0 to 50."""
-    n = 3500
-    x = 1
-    print('Binomial distribution:')
-    for i in range(0, 51):
-        p = data / (3600 * 8)
-        try:
-            result = (binomial_coefficient(n, i) * \
-                (p ** i) * ((1 - p) ** (n - i)))
-        except:
-            result = 0
-        print('{:d} -> {:.03f}' .format(i, result), end= '')
-        if x == 6 or i == 50:
-            print('')
-            x = 0
-        else:
-            print('', end='\t')
-        x += 1
-
-def hotline_one(data: int):
-    """Hotline function with 1 arg."""
-    binomial_law(data)
-
 def usage():
     """Print the helper in the standard output."""
-    print('USAGE\n\t./203hotline [n k | d]')
-    print('\nDESCRIPTION\n\tn\t\x1B[3mn\x1B[23m value for the computation of (n k)')
-    print('\tk\t\x1B[3mk\x1B[23m value for the computation of (n k)')
-    print('\td\taverage duration of calls (in seconds)')
+    print('USAGE\n\t./203hotline [n k | d]',
+    '\nDESCRIPTION\n\tn\t\x1B[3mn\x1B[23m value for the computation of (n k)',
+    '\tk\t\x1B[3mk\x1B[23m value for the computation of (n k)',
+    '\td\taverage duration of calls (in seconds)', sep='\n')
 
 if __name__ == "__main__":
     if len(argv) == 2 and argv[1] == "-h":
