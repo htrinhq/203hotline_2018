@@ -7,17 +7,19 @@
 
 from math import factorial
 from time import time
+from sys import stderr
+
+def error(str: str):
+    """Error message, on error output, then exits."""
+    stderr.write(str)
+    exit(84)
 
 def binomial_coefficient(n: int, k: int):
     """Get the binomial coefficient of 2 values."""
-    try:
-        a = factorial(n)
-        b = factorial(k)
-        c = factorial(n - k)
-        div = a // (b * c)
-    except:
-        div = 0
-    return div
+    a = factorial(n)
+    b = factorial(k)
+    c = factorial(n - k)
+    return a // (b * c)
 
 def sep_selector(x: int, i: int) -> int:
     """Select separator between tab en end line."""

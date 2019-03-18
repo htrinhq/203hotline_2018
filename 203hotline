@@ -6,13 +6,9 @@
 ## 203hotline
 ##
 
-from sys import argv, stderr
+from sys import argv
 from hotline import hotline_one, hotline_two
-
-def error():
-    """Error message, on error output, then exits."""
-    stderr.write("INVALID ARGUMENT\n")
-    exit(84)
+from binomial import error
 
 def usage():
     """Print the helper in the standard output."""
@@ -31,4 +27,4 @@ if __name__ == "__main__":
         data = [int(argv[1]), int(argv[2])]
         hotline_two(data)
     else:
-        error()
+        error("INVALID ARGUMENT\n")
