@@ -41,11 +41,11 @@ def binomial_law(data: int):
         over_time = data / (3600 * 8)
         result = (binomial_coefficient(n, i) *
             (over_time ** i) * ((1 - over_time) ** (n - i)))
-        if i > 25:
+        if i <= 25:
             overload += result
         print('{:d} -> {:.03f}' .format(i, result), end='')
         x = sep_selector(x, i)
     end = time()
-    print('overload: {:.01f}%' .format((overload * 100) if data < 303 else 100),
+    print('overload: {:.01f}%' .format(((1 - overload) * 100) if data < 303 else 100),
           'computation time: {:.02f} ms' .format((end - start) * 1000),
           sep='\n')

@@ -18,11 +18,11 @@ def poisson_law(data: int):
     over_time = 3500 * (data / (3600 * 8))
     for i in range(0, 51):
         result = exp(-over_time) * pow(over_time, i) / factorial(i)
-        if i > 25:
+        if i <= 25:
             overload += result
         print('{:d} -> {:.03f}' .format(i, result), end='')
         x = sep_selector(x, i)
     end = time()
-    print('overload: {:.01f}%' .format((overload * 100) if data < 303 else 100),
+    print('overload: {:.01f}%' .format(((1 - overload) * 100) if data < 303 else 100),
           'computation time: {:.02f} ms' .format((end - start) * 1000),
           sep='\n')
