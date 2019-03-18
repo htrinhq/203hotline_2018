@@ -23,6 +23,6 @@ def poisson_law(data: int):
         print('{:d} -> {:.03f}' .format(i, result), end='')
         x = sep_selector(x, i)
     end = time()
-    print('overload: {:.01f}%' .format(overload * 100),
+    print('overload: {:.01f}%' .format((overload * 100) if data < 303 else 100),
           'computation time: {:.02f} ms' .format((end - start) * 1000),
           sep='\n')
